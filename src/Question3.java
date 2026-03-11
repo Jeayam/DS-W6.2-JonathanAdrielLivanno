@@ -1,4 +1,5 @@
-import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class Question3 {
@@ -15,7 +16,7 @@ public class Question3 {
         String nama = input.nextLine();
         String[] arrNama = nama.split(" ");
 
-        if(arrNama.length != antrian){
+        if(arrNama.length > antrian && arrNama.length < antrian){
             System.out.println("Jumlah nama tidak sesuai dengan total antrian..");
             return;}
 
@@ -26,7 +27,7 @@ public class Question3 {
             arrKesempatan[i] = input.nextInt();
             }
 
-        if(arrKesempatan.length < antrian){
+        if(arrKesempatan.length < antrian && arrKesempatan.length > antrian ){
             System.out.println("Jumlah Kesempatan tidak sesuai dengan total Nama...");
             return;}
 
@@ -39,8 +40,24 @@ public class Question3 {
             System.out.println("Inputan Kesempatan tidak dapat diatas 10..");
             return;}
         }
-        System.out.println(antrian);
-        System.out.println(Arrays.toString(arrNama));
-        System.out.println(Arrays.toString(arrKesempatan));
+        //cgpt
+        Queue<Integer> queue = new LinkedList<>();
+
+        for (int i = 0; i < antrian; i++) {
+            queue.add(i);
+        }
+
+        while (!queue.isEmpty()) {
+
+            int idx = queue.poll();
+
+            arrKesempatan[idx]--;
+
+            if (arrKesempatan[idx] > 0) {
+                System.out.println(arrNama[idx] + "|Try Again|" + arrKesempatan[idx]);
+                queue.add(idx);
+            } else {
+                System.out.println(arrNama[idx] + "|Get Out|0");
+            }
     }
-}
+    }}
