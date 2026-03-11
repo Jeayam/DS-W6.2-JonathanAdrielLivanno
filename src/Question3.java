@@ -16,7 +16,7 @@ public class Question3 {
         String nama = input.nextLine();
         String[] arrNama = nama.split(" ");
 
-        if(arrNama.length > antrian && arrNama.length < antrian){
+        if(arrNama.length != antrian){
             System.out.println("Jumlah nama tidak sesuai dengan total antrian..");
             return;}
 
@@ -27,7 +27,7 @@ public class Question3 {
             arrKesempatan[i] = input.nextInt();
             }
 
-        if(arrKesempatan.length < antrian && arrKesempatan.length > antrian ){
+        if(arrKesempatan.length != antrian){
             System.out.println("Jumlah Kesempatan tidak sesuai dengan total Nama...");
             return;}
 
@@ -40,7 +40,7 @@ public class Question3 {
             System.out.println("Inputan Kesempatan tidak dapat diatas 10..");
             return;}
         }
-        //cgpt
+        //chatgpt line 44-60
         Queue<Integer> queue = new LinkedList<>();
 
         for (int i = 0; i < antrian; i++) {
